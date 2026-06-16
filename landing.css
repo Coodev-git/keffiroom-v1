@@ -272,3 +272,8 @@ body.landing-page {
 .sheet-label svg { width:11px; height:11px; }
 .sheet-title { font-family:'Syne',sans-serif; font-size:1.4rem; font-weight:800; color:var(--t1); margin-bottom:3px; }
 .sheet-sub { font-size:.78rem; color:var(--t3); margin-bottom:16px; line-height:1.55; }
+
+/* Append to the very end of the file */
+.auth-screen.hidden {
+    display: none !important;
+}
