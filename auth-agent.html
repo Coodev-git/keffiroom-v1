@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>KeffiRooms — Agent Login</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/landing.css">
+<style>
+[data-theme="dark"]{--bg:#0A0A0A;--bg2:#111;--bg3:#161616;--bg4:#1C1C1C;--t1:#fff;--t2:rgba(255,255,255,.75);--t3:rgba(255,255,255,.45);--t4:rgba(255,255,255,.25);--border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.14);}
+[data-theme="light"]{--bg:#F4F7F6;--bg2:#fff;--bg3:#EEF2F0;--bg4:#E4EAE8;--t1:#0D1F1C;--t2:#2D4A45;--t3:#5A7A74;--t4:#8AABA5;--border:rgba(13,31,28,.1);--border2:rgba(13,31,28,.18);}
+</style>
+</head>
+<body>
+<div id="auth-agent" class="auth-screen on">
+  <div class="auth-nav">
+    <button class="auth-back" onclick="goPage('index.html')">
+      <span class="material-symbols-rounded ms" style="font-size:.88rem;">arrow_back</span> Back
+    </button>
+  </div>
+  <div class="auth-visual">
+    <div class="auth-icon gold">
+      <span class="material-symbols-rounded ms" style="font-size:1.6rem;">business_center</span>
+    </div>
+    <div class="auth-visual-title">Agent Portal</div>
+    <div class="auth-visual-sub">Login to manage your listings and reach seekers</div>
+  </div>
+  <div class="auth-sheet" id="sheet-login">
+    <div class="sheet-handle"></div>
+    <div class="sheet-label gold">
+      <span class="material-symbols-rounded ms" style="font-size:.78rem;">home</span>
+      Agent Login
+    </div>
+    <div class="sheet-title">Welcome Back</div>
+    <div class="sheet-sub">Enter your phone and PIN to continue.</div>
+    <div class="fg"><label>Phone Number <span class="rq">*</span></label>
+      <input class="fi" type="tel" id="ag-phone" placeholder="08012345678">
+    </div>
+    <div class="fg">
+      <div class="pin-lbl">Your 6-Digit PIN <span class="rq">*</span></div>
+      <div class="pin-row" id="pin-ag">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,0,'pin-ag')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,1,'pin-ag')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,2,'pin-ag')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,3,'pin-ag')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,4,'pin-ag')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,5,'pin-ag')">
+      </div>
+    </div>
+    <button class="btn-primary" onclick="agentLogin()">
+      <span class="material-symbols-rounded ms" style="font-size:1rem;">login</span>
+      Login
+    </button>
+    <div class="sw-link">New agent? <a onclick="showRegister()">Request Access</a></div>
+  </div>
+
+  <!-- REGISTER SHEET (hidden initially) -->
+  <div class="auth-sheet" id="sheet-register" style="display:none;">
+    <div class="sheet-handle"></div>
+    <div class="sheet-label gold">
+      <span class="material-symbols-rounded ms" style="font-size:.78rem;">person_add</span>
+      New Agent
+    </div>
+    <div class="sheet-title">Request Access</div>
+    <div class="sheet-sub">Submit your details. Admin will approve you via WhatsApp before you can post listings.</div>
+    <div class="fg"><label>Full Name <span class="rq">*</span></label>
+      <input class="fi" type="text" id="rg-name" placeholder="Your name or business name">
+    </div>
+    <div class="fg"><label>Phone Number <span class="rq">*</span></label>
+      <input class="fi" type="tel" id="rg-phone" placeholder="08012345678">
+    </div>
+    <div class="fg">
+      <div class="pin-lbl">Set Your 6-Digit PIN <span class="rq">*</span></div>
+      <div class="pin-row" id="pin-rg">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,0,'pin-rg')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,1,'pin-rg')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,2,'pin-rg')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,3,'pin-rg')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,4,'pin-rg')">
+        <input class="pb" maxlength="1" type="password" inputmode="numeric" oninput="pinNext(this,5,'pin-rg')">
+      </div>
+    </div>
+    <button class="btn-primary" onclick="agentRegister()">
+      <span class="material-symbols-rounded ms" style="font-size:1rem;">send</span>
+      Submit Request
+    </button>
+    <div class="info-box">
+      <span class="material-symbols-rounded ms" style="font-size:.9rem;">schedule</span>
+      After submitting, the admin will contact you via WhatsApp to verify before approving your account.
+    </div>
+    <div class="sw-link" style="margin-top:10px;"><a onclick="showLogin()">Already have access? Login</a></div>
+  </div>
+</div>
+
+<div class="toast" id="toast">
+  <span class="material-symbols-rounded ms" style="font-size:.9rem;color:var(--teal-l);">check_circle</span>
+  <span id="toast-msg">Done</span>
+</div>
+
+<script src="js/db.js"></script>
+<script src="js/auth.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const t = localStorage.getItem('kr6_theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', t);
+});
+function showRegister() {
+  document.getElementById('sheet-login').style.display = 'none';
+  document.getElementById('sheet-register').style.display = 'block';
+  document.getElementById('sheet-register').style.animation = 'sheetUp 300ms var(--ease) both';
+}
+function showLogin() {
+  document.getElementById('sheet-register').style.display = 'none';
+  document.getElementById('sheet-login').style.display = 'block';
+}
+</script>
+</body>
+</html>
