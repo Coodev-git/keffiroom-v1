@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KeffiRooms — NSUK Student Lodges</title>
+<title>DEBUG MODE — KeffiRooms</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
 <link rel="stylesheet" href="./base.css">
 <link rel="stylesheet" href="./landing.css">
@@ -16,39 +16,38 @@
   --bg:#0A0A0A;--bg2:#111;--bg3:#161616;--bg4:#1C1C1C;--card:#141414;
   --t1:#fff;--t2:rgba(255,255,255,.75);--t3:rgba(255,255,255,.45);--t4:rgba(255,255,255,.25);--t5:rgba(255,255,255,.1);
   --border:rgba(255,255,255,.08);--border2:rgba(255,255,255,.14);
-  --sh:0 4px 24px rgba(0,0,0,.45);--sh-lg:0 12px 48px rgba(0,0,0,.55);
 }
 [data-theme="light"] {
   --bg:#F4F7F6;--bg2:#fff;--bg3:#EEF2F0;--bg4:#E4EAE8;--card:#fff;
   --t1:#0D1F1C;--t2:#2D4A45;--t3:#5A7A74;--t4:#8AABA5;--t5:rgba(13,31,28,.08);
   --border:rgba(13,31,28,.1);--border2:rgba(13,31,28,.18);
-  --sh:0 4px 24px rgba(13,31,28,.1);--sh-lg:0 12px 48px rgba(13,31,28,.14);
+}
+
+/* EMERGENCY CRASH BANNER */
+#emergency-log-banner {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999999;
+  background: #DC2626; color: white; font-family: monospace;
+  padding: 12px; font-size: 13px; max-height: 150px; overflow-y: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5); display: none;
 }
 
 /* RESPONSIVE DESKTOP CONSTRAINT WRAPPERS */
-.sl-top, 
-.sl-cards, 
-.sl-footer,
-.scroll-content-wrap {
-  width: 100%;
-  max-width: 460px;
-  margin-left: auto;
-  margin-right: auto;
-  box-sizing: border-box;
+.sl-top, .sl-cards, .sl-footer, .scroll-content-wrap {
+  width: 100%; max-width: 460px; margin-left: auto; margin-right: auto; box-sizing: border-box;
 }
 
+/* FORCE INTERACTION BYPASS */
+.terms-overlay, .sat-overlay { display: none !important; }
+.terms-overlay.open, .sat-overlay.open { display: flex !important; }
+
 /* SOCIAL PROOF ROW */
-.social-proof {
-  display:flex;align-items:center;gap:0;margin-bottom:6px;
-  animation:slideUp 400ms var(--ease) 350ms both;
-}
+.social-proof { display:flex;align-items:center;gap:0;margin-bottom:6px; }
 .sp-avatars { display:flex;margin-right:10px; }
 .sp-av {
   width:28px;height:28px;border-radius:50%;border:2px solid #0A0A0A;
   background:linear-gradient(135deg,var(--teal),var(--teal-d));
   display:flex;align-items:center;justify-content:center;
-  font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;color:white;
-  margin-left:-8px;
+  font-family:'Syne',sans-serif;font-size:.62rem;font-weight:700;color:white;margin-left:-8px;
 }
 .sp-av:first-child{margin-left:0;}
 .sp-text { font-size:.72rem;color:rgba(255,255,255,.5); }
@@ -56,38 +55,29 @@
 .sp-stars { color:#F59E0B;font-size:.75rem;letter-spacing:1px; }
 
 /* TRUST BADGES ROW */
-.trust-badges {
-  display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;
-  animation:slideUp 400ms var(--ease) 300ms both;
-}
+.trust-badges { display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px; }
 .trust-badge {
   display:flex;align-items:center;gap:5px;
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
   border-radius:20px;padding:5px 11px;font-size:.7rem;color:rgba(255,255,255,.5);
 }
-.trust-badge .ms { font-size:.82rem;color:var(--teal-l); }
 
 /* FEATURED LISTING CARD */
-.feat-wrap { width:100%;max-width:380px;margin:0 auto 28px;animation:slideUp 400ms var(--ease) 280ms both; }
+.feat-wrap { width:100%;max-width:380px;margin:0 auto 28px; }
 .feat-card {
   background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
   border-radius:var(--r-xl);overflow:hidden;cursor:pointer;
-  transition:transform 200ms var(--ease),box-shadow 200ms;
 }
-.feat-card:hover { transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,0,0,.4); }
 .feat-inner { padding:14px;display:flex;gap:12px;align-items:center; }
 .feat-thumb { width:64px;height:64px;border-radius:var(--r);overflow:hidden;flex-shrink:0;background:var(--bg4); }
 .feat-thumb img { width:100%;height:100%;object-fit:cover; }
-.feat-thumb-ph { width:100%;height:100%;display:flex;align-items:center;justify-content:center; }
 .feat-info { flex:1; }
 .feat-area { font-size:.68rem;font-weight:700;color:var(--teal-l);text-transform:uppercase;letter-spacing:.05em;margin-bottom:3px; }
-.feat-v { display:inline-flex;align-items:center;gap:3px;background:rgba(16,185,129,.2);border:1px solid rgba(16,185,129,.3);color:#34D399;font-size:.62rem;font-weight:700;padding:2px 7px;border-radius:20px;float:right; }
-.feat-v .ms { font-size:.72rem; }
 .feat-title { font-family:'Syne',sans-serif;font-size:.88rem;font-weight:700;color:rgba(255,255,255,.9);margin-bottom:2px; }
 .feat-price { font-size:.78rem;color:rgba(255,255,255,.45); }
 
 /* HOW IT WORKS */
-.hiw { padding:0 20px 32px;max-width:420px;margin:0 auto;animation:slideUp 400ms var(--ease) 200ms both; }
+.hiw { padding:0 20px 32px;max-width:420px;margin:0 auto; }
 .hiw-title { font-family:'Syne',sans-serif;font-size:1.55rem;font-weight:800;color:var(--t1);margin-bottom:20px; }
 .hiw-step { display:flex;gap:14px;margin-bottom:18px;align-items:flex-start; }
 .step-num { width:38px;height:38px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800; }
@@ -97,7 +87,7 @@
 .step-s { font-size:.78rem;color:var(--t3);line-height:1.6; }
 
 /* STATS STRIP */
-.stats-strip { display:flex;justify-content:space-around;width:100%;max-width:380px;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;margin-bottom:32px;animation:slideUp 400ms var(--ease) 360ms both; }
+.stats-strip { display:flex;justify-content:space-around;width:100%;max-width:380px;border-top:1px solid rgba(255,255,255,.08);padding-top:24px;margin-bottom:32px; }
 .stat-item { text-align:center; }
 .stat-n { font-family:'Syne',sans-serif;font-size:1.9rem;font-weight:800;line-height:1; }
 .stat-n.t { color:var(--t1); }
@@ -107,347 +97,86 @@
 
 /* THEME TOGGLE */
 .theme-toggle {
-  position:fixed;top:16px;right:16px;z-index:200;
-  width:36px;height:36px;border-radius:50%;
+  position:fixed;top:16px;right:16px;z-index:200;width:36px;height:36px;border-radius:50%;
   background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
   color:rgba(255,255,255,.6);display:flex;align-items:center;justify-content:center;
-  transition:all 200ms var(--ease);
 }
-.theme-toggle:hover { background:rgba(255,255,255,.15);color:white; }
-.theme-toggle .ms { font-size:1.1rem; }
-[data-theme="light"] .theme-toggle { background:rgba(13,31,28,.08);border-color:rgba(13,31,28,.15);color:var(--t3); }
-
-/* TERMS POPUP */
-.terms-overlay {
-  position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;
-  display:none;align-items:flex-end;backdrop-filter:blur(6px);
-}
-.terms-overlay.open { display:flex;animation:backdropIn 250ms ease both; }
-.terms-sheet {
-  background:var(--bg2);border-radius:24px 24px 0 0;
-  width:100%;max-width:520px;margin:0 auto;
-  padding:20px 20px 36px;
-  animation:sheetUp 320ms var(--ease) both;
-  max-height:88vh;overflow-y:auto;
-}
-.terms-handle { width:34px;height:4px;background:var(--bg4);border-radius:2px;margin:0 auto 18px; }
-.terms-title { font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--t1);margin-bottom:4px;display:flex;align-items:center;gap:8px; }
-.terms-title .ms { font-size:1.2rem;color:var(--teal-l); }
-.terms-sub { font-size:.78rem;color:var(--t3);margin-bottom:18px;line-height:1.55; }
-.terms-section { margin-bottom:16px; }
-.terms-section-title { font-size:.72rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-l);margin-bottom:8px;display:flex;align-items:center;gap:5px; }
-.terms-section-title .ms { font-size:.85rem; }
-.terms-item { display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-size:.8rem;color:var(--t2);line-height:1.6; }
-.terms-item .ms { font-size:.95rem;color:var(--teal-l);flex-shrink:0;margin-top:1px; }
-.terms-divider { height:1px;background:var(--border);margin:14px 0; }
-.terms-highlight {
-  background:var(--teal-p);border:1px solid var(--teal-b);
-  border-radius:var(--r);padding:12px 14px;
-  font-size:.78rem;color:var(--teal-l);line-height:1.6;margin-bottom:16px;
-  display:flex;gap:8px;align-items:flex-start;
-}
-.terms-highlight .ms { font-size:.95rem;flex-shrink:0;margin-top:1px; }
-.terms-fee-box {
-  background:var(--gold-p);border:1px solid var(--gold-b);
-  border-radius:var(--r);padding:12px 14px;
-  font-size:.78rem;color:var(--gold-l);line-height:1.6;margin-bottom:16px;
-}
-.terms-fee-box strong { display:block;font-size:.84rem;margin-bottom:3px;font-family:'Syne',sans-serif; }
-.terms-actions { display:flex;gap:10px; }
-.btn-terms-accept {
-  flex:1;background:var(--teal);color:white;padding:13px;border-radius:var(--r-xl);
-  font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;
-  display:flex;align-items:center;justify-content:center;gap:7px;
-  transition:all 200ms var(--ease);box-shadow:0 4px 14px rgba(13,148,136,.3);
-}
-.btn-terms-accept:hover { background:var(--teal-l);transform:translateY(-1px); }
-.btn-terms-accept .ms { font-size:1rem; }
-.btn-terms-decline {
-  background:var(--bg3);border:1px solid var(--border);color:var(--t3);
-  padding:13px 16px;border-radius:var(--r-xl);font-size:.86rem;
-  transition:all 200ms;
-}
-.btn-terms-decline:hover { border-color:var(--border2);color:var(--t2); }
-
-/* SATISFACTION MODAL */
-.sat-overlay {
-  position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:300;
-  display:none;align-items:center;justify-content:center;padding:20px;
-  backdrop-filter:blur(6px);
-}
-.sat-overlay.open { display:flex;animation:backdropIn 250ms ease both; }
-.sat-card {
-  background:var(--bg2);border-radius:var(--r-2xl);
-  padding:24px 20px;width:100%;max-width:360px;text-align:center;
-  animation:bounceIn 380ms var(--spring) both;
-}
-.sat-icon { font-size:3rem;margin-bottom:12px; }
-.sat-title { font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;color:var(--t1);margin-bottom:6px; }
-.sat-sub { font-size:.8rem;color:var(--t3);line-height:1.6;margin-bottom:20px; }
-.sat-stars { display:flex;gap:8px;justify-content:center;margin-bottom:20px; }
-.sat-star { font-size:2rem;cursor:pointer;transition:transform 200ms var(--spring);color:var(--bg4); }
-.sat-star.active { color:#F59E0B; }
-.sat-star:hover { transform:scale(1.2); }
-.sat-textarea { width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r-lg);padding:11px 13px;font-size:.84rem;color:var(--t1);outline:none;resize:none;height:80px;margin-bottom:14px;transition:border-color 180ms; }
-.sat-textarea:focus { border-color:var(--teal); }
-.sat-textarea::placeholder { color:var(--t4); }
-.btn-sat-submit {
-  width:100%;background:var(--teal);color:white;padding:13px;border-radius:var(--r-xl);
-  font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;
-  transition:all 200ms var(--ease);box-shadow:0 4px 14px rgba(13,148,136,.3);
-}
-.btn-sat-submit:hover { background:var(--teal-l);transform:translateY(-1px); }
 </style>
+<script>
+// TOP-LEVEL FAILSAFE TRAP: Catches runtime crashes before DOM load completes
+window.addEventListener('error', function(e) {
+  var banner = document.getElementById('emergency-log-banner');
+  if(banner) {
+    banner.style.display = 'block';
+    banner.innerHTML += '<div><strong>[Runtime Error]</strong> ' + e.message + ' at ' + e.filename + ':' + e.lineno + '</div>';
+  }
+});
+</script>
 </head>
 <body class="landing-page">
 
-<!-- THEME TOGGLE -->
+<div id="emergency-log-banner"></div>
+
 <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn">
   <span class="material-symbols-rounded ms" id="theme-icon">light_mode</span>
 </button>
 
-<!-- LANDING SCREEN -->
 <div id="landing-screen">
-  <div class="sl-bg">
-    <div class="sl-orb1"></div>
-    <div class="sl-orb2"></div>
-    <div class="sl-orb3"></div>
-  </div>
   <div class="sl-top">
     <div class="sl-logo-wrap">
       <div class="sl-logo"><span class="material-symbols-rounded ms" style="font-size:1.7rem;color:white;">home</span></div>
-      <div class="sl-logo-ring"></div>
     </div>
     <div class="sl-wordmark">KEFFI<span class="r">ROOMS</span></div>
     <div class="sl-tagline">NSUK Student Lodges</div>
-    <div class="sl-badge">
-      <span class="material-symbols-rounded ms" style="font-size:.75rem;color:var(--teal-l);">verified_user</span>
-      <strong>NSUK's</strong>&nbsp;Most Trusted Accommodation Portal
-    </div>
   </div>
 
-  <!-- ROLE CARDS -->
   <div class="sl-cards">
-    <button class="sl-card teal" onclick="handleRoleClick('seeker', event)">
-      <div class="sl-card-icon teal"><span class="material-symbols-rounded ms" style="font-size:1.2rem;">travel_explore</span></div>
+    <button class="sl-card teal" onclick="handleRoleClick('seeker', event)" style="position:relative; z-index:10000; pointer-events:auto !important;">
       <div class="sl-card-text">
-        <div class="sl-card-title">I am a Student Seeker</div>
+        <div class="sl-card-title">I am a Student Seeker (Click Test)</div>
         <div class="sl-card-sub">Browse verified rooms, contact agents securely</div>
       </div>
-      <div class="sl-card-arrow"><span class="material-symbols-rounded ms" style="font-size:1.1rem;">chevron_right</span></div>
     </button>
-    <button class="sl-card gold" onclick="handleRoleClick('agent', event)">
-      <div class="sl-card-icon gold"><span class="material-symbols-rounded ms" style="font-size:1.2rem;">business_center</span></div>
+    <button class="sl-card gold" onclick="handleRoleClick('agent', event)" style="position:relative; z-index:10000; pointer-events:auto !important;">
       <div class="sl-card-text">
         <div class="sl-card-title">I am a Property Agent</div>
-        <div class="sl-card-sub">List apartments, manage leads and bookings</div>
       </div>
-      <div class="sl-card-arrow"><span class="material-symbols-rounded ms" style="font-size:1.1rem;">chevron_right</span></div>
-    </button>
-    <button class="sl-card violet" onclick="handleRoleClick('admin', event)">
-      <div class="sl-card-icon violet"><span class="material-symbols-rounded ms" style="font-size:1.2rem;">admin_panel_settings</span></div>
-      <div class="sl-card-text">
-        <div class="sl-card-title">I am an NSUK Admin</div>
-        <div class="sl-card-sub">Verify listings, manage agents and trust badges</div>
-      </div>
-      <div class="sl-card-arrow"><span class="material-symbols-rounded ms" style="font-size:1.1rem;">chevron_right</span></div>
-    </button>
-  </div>
-
-  <div class="sl-footer">
-    <button class="sl-guest-btn" onclick="handleRoleClick('guest', event)">
-      <span class="material-symbols-rounded ms" style="font-size:.85rem;">visibility</span>
-      Browse as Guest
     </button>
   </div>
 </div>
 
-<!-- SCROLLABLE INFO -->
-<div style="background:var(--bg);">
-  <div class="scroll-content-wrap">
-    <!-- SOCIAL PROOF -->
-    <div style="padding:36px 20px 0;">
-      <div class="social-proof">
-        <div class="sp-avatars">
-          <div class="sp-av">AY</div>
-          <div class="sp-av" style="background:linear-gradient(135deg,#C9863A,#A06828);">IB</div>
-          <div class="sp-av" style="background:linear-gradient(135deg,#7C3AED,#5B21B6);">CH</div>
-          <div class="sp-av" style="background:linear-gradient(135deg,#10B981,#0F766E);">MU</div>
-          <div class="sp-av" style="background:linear-gradient(135deg,#EF4444,#B91C1C);">FA</div>
-        </div>
-        <div>
-          <div class="sp-text"><strong id="sp-count">0</strong> students housed this semester</div>
-          <div class="sp-stars">★★★★★</div>
-        </div>
-      </div>
-      <div class="trust-badges">
-        <div class="trust-badge"><span class="material-symbols-rounded ms">verified_user</span> GPS Verified</div>
-        <div class="trust-badge"><span class="material-symbols-rounded ms">lock</span> Escrow Protected</div>
-        <div class="trust-badge"><span class="material-symbols-rounded ms">support_agent</span> Admin Verified</div>
-      </div>
-    </div>
+<script src="js/db.js" onerror="document.getElementById('emergency-log-banner').style.display='block'; document.getElementById('emergency-log-banner').innerHTML+='<div>[Load Error] Failed to load js/db.js</div>'"></script>
+<script src="js/auth.js" onerror="document.getElementById('emergency-log-banner').style.display='block'; document.getElementById('emergency-log-banner').innerHTML+='<div>[Load Error] Failed to load js/auth.js</div>'"></script>
 
-    <!-- STATS -->
-    <div style="padding:0 20px;">
-      <div class="stats-strip">
-        <div class="stat-item"><div class="stat-n t" id="lp-total">0</div><div class="stat-l">Listings</div></div>
-        <div class="stat-item"><div class="stat-n g" id="lp-verified">0</div><div class="stat-l">Verified</div></div>
-        <div class="stat-item"><div class="stat-n gld" id="lp-agents">0</div><div class="stat-l">Agents</div></div>
-      </div>
-    </div>
-
-    <!-- FEATURED -->
-    <div class="feat-wrap" id="feat-wrap" style="display:none;padding:0 20px;">
-      <div class="feat-card" id="feat-card"></div>
-    </div>
-
-    <!-- HOW IT WORKS -->
-    <div class="hiw">
-      <div class="hiw-title">How KeffiRooms Works:</div>
-      <div class="hiw-step">
-        <div class="step-num t">1</div>
-        <div><div class="step-t">Pick Your Preferred Zone</div><div class="step-s">Filter by popular NSUK student locations: High Court Road, Angwan Lambu, Kelv, Pyanku.</div></div>
-      </div>
-      <div class="hiw-step">
-        <div class="step-num g">2</div>
-        <div><div class="step-t">Verify Trust Badge</div><div class="step-s">Every verified listing has been physically inspected by our Admin team so you don't lose money to scammers.</div></div>
-      </div>
-      <div class="hiw-step">
-        <div class="step-num t">3</div>
-        <div><div class="step-t">Connect &amp; Secure Lodge</div><div class="step-s">KeffiRooms connects you with verified agents through our protected WhatsApp escrow coordination.</div></div>
-      </div>
-      <div class="hiw-step">
-        <div class="step-num g">4</div>
-        <div><div class="step-t">Confirm &amp; Complete</div><div class="step-s">After visiting the property, both parties confirm satisfaction. Payment is released only when both sides agree.</div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <div style="background:var(--bg2);border-top:1px solid var(--border);padding:28px 20px;text-align:center;">
-    <div style="display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:8px;">
-      <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--teal),var(--teal-d));display:flex;align-items:center;justify-content:center;">
-        <span class="material-symbols-rounded ms" style="font-size:.9rem;color:white;">home</span>
-      </div>
-      <div style="font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;">KEFFI<span style="color:var(--teal-l);">ROOMS</span></div>
-    </div>
-    <div style="font-size:.74rem;color:var(--t3);margin-bottom:14px;line-height:1.6;">Modern, trusted property listing platform for NSUK students.</div>
-    <div style="font-size:.7rem;color:var(--t4);">© 2026 KeffiRooms Inc. Built for NSUK Communities.</div>
-  </div>
-</div>
-
-<!-- TERMS & CONDITIONS POPUP -->
-<div class="terms-overlay" id="terms-overlay">
-  <div class="terms-sheet">
-    <div class="terms-handle"></div>
-    <div class="terms-title">
-      <span class="material-symbols-rounded ms">gavel</span>
-      Terms &amp; Data Sharing Policy
-    </div>
-    <div class="terms-sub">Please read before we connect you with an agent. This takes 30 seconds.</div>
-
-    <div class="terms-section">
-      <div class="terms-section-title"><span class="material-symbols-rounded ms">share</span> What We Share</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">check_circle</span>Your contact (phone) is shared with KeffiRooms admin only — not directly with agents</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">check_circle</span>Listing details (title, area, price, amenities) are shared with you</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">check_circle</span>Agent information is shared only after admin verification</div>
-    </div>
-
-    <div class="terms-highlight">
-      <span class="material-symbols-rounded ms">support_agent</span>
-      <span><strong>Transparent Process:</strong> KeffiRooms will contact BOTH you and the agent to verify identities before connecting you. You will never pay anyone without admin confirmation.</span>
-    </div>
-
-    <div class="terms-section">
-      <div class="terms-section-title"><span class="material-symbols-rounded ms">security</span> Your Protection</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">verified_user</span>All agents are manually approved by our admin team</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">location_on</span>All listings include GPS-verified photo metadata</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">payments</span>Payment coordination is handled through KeffiRooms — never pay an agent directly without our confirmation</div>
-    </div>
-
-    <div class="terms-divider"></div>
-
-    <div class="terms-fee-box">
-      <strong>Coordination Fee Notice</strong>
-      KeffiRooms charges a small verification/coordination fee (N500–N1,000) upon successful connection between seeker and agent. This fee covers trust verification, identity confirmation, and secure coordination. Fee is only collected after both parties confirm the meeting was successful.
-    </div>
-
-    <div class="terms-section">
-      <div class="terms-section-title"><span class="material-symbols-rounded ms">star</span> After Your Visit</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">thumb_up</span>You will be asked to confirm satisfaction after meeting the agent</div>
-      <div class="terms-item"><span class="material-symbols-rounded ms">rate_review</span>Your rating helps protect other NSUK students from fraud</div>
-    </div>
-
-    <div class="terms-actions">
-      <button class="btn-terms-accept" id="terms-accept-btn" onclick="acceptTermsAndProceed()">
-        <span class="material-symbols-rounded ms">check_circle</span>
-        I Understand, Proceed
-      </button>
-      <button class="btn-terms-decline" onclick="closeTerms()">Decline</button>
-    </div>
-  </div>
-</div>
-
-<!-- SATISFACTION CONFIRMATION MODAL -->
-<div class="sat-overlay" id="sat-overlay">
-  <div class="sat-card">
-    <div class="sat-icon">🏠</div>
-    <div class="sat-title">How was your visit?</div>
-    <div class="sat-sub">Your honest feedback protects other NSUK students from fraud and helps us maintain trust.</div>
-    <div class="sat-stars" id="sat-stars">
-      <span class="sat-star" onclick="rateStar(1)">★</span>
-      <span class="sat-star" onclick="rateStar(2)">★</span>
-      <span class="sat-star" onclick="rateStar(3)">★</span>
-      <span class="sat-star" onclick="rateStar(4)">★</span>
-      <span class="sat-star" onclick="rateStar(5)">★</span>
-    </div>
-    <textarea class="sat-textarea" id="sat-comment" placeholder="Tell us about your experience (optional)..."></textarea>
-    <button class="btn-sat-submit" onclick="submitSatisfaction()">Submit Feedback</button>
-  </div>
-</div>
-
-<!-- TOAST -->
-<div class="toast" id="toast">
-  <span class="material-symbols-rounded ms" style="font-size:.9rem;color:var(--teal-l);">check_circle</span>
-  <span id="toast-msg">Done</span>
-</div>
-
-<script src="js/db.js"></script>
-<script src="js/auth.js"></script>
 <script>
-// ── ARCHITECTURAL EXECUTION SAFEGUARDS ──
-// Prevents complete application freezing if external dependencies/files fail to load
-window.goPage = window.goPage || function(url) { window.location.href = url; };
-window.fmtN = window.fmtN || function(num) { return Number(num).toLocaleString(); };
-window.nowStr = window.nowStr || function() { return new Date().toLocaleString(); };
-window.ADMIN_WA = window.ADMIN_WA || "2340000000000"; 
-window.seekerGuest = window.seekerGuest || function() { window.location.href = 'seeker.html?guest=true'; };
-window.DB = window.DB || { listings: [], agents: [] };
+// LOCAL VARIABLE CONFIGURATION
+window.goPage = function(url) { alert('Routing to: ' + url); window.location.href = url; };
+window.fmtN = function(num) { return Number(num).toLocaleString(); };
+window.nowStr = function() { return new Date().toLocaleString(); };
+window.ADMIN_WA = "2340000000000"; 
+window.seekerGuest = function() { alert('Routing to Guest Mode'); window.location.href = 'seeker.html?guest=true'; };
 
-// ── PENDING ROLE ──
+if (!window.DB) {
+  window.DB = { listings: [], agents: [] };
+}
+
 let pendingRole = null;
 let termsAccepted = localStorage.getItem('kr6_terms_accepted') === 'true';
-let satRating = 0;
 
-// ── INIT ──
 document.addEventListener('DOMContentLoaded', () => {
-  applyTheme();
-  updateLandingStats();
-  renderFeatured();
-  animateSocialProof();
-  
-  const pendingSat = sessionStorage.getItem('kr6_pending_satisfaction');
-  if (pendingSat) {
-    sessionStorage.removeItem('kr6_pending_satisfaction');
-    setTimeout(() => openSatisfaction(), 600);
+  try {
+    applyTheme();
+    updateLandingStats();
+  } catch(err) {
+    var banner = document.getElementById('emergency-log-banner');
+    banner.style.display = 'block';
+    banner.innerHTML += '<div><strong>[Init Error]</strong> ' + err.message + '</div>';
   }
 });
 
 function applyTheme() {
   const theme = localStorage.getItem('kr6_theme') || 'dark';
   document.documentElement.setAttribute('data-theme', theme);
-  const icon = document.getElementById('theme-icon');
-  if (icon) icon.textContent = theme === 'dark' ? 'light_mode' : 'dark_mode';
 }
 
 function toggleTheme() {
@@ -455,140 +184,19 @@ function toggleTheme() {
   const next = current === 'dark' ? 'light' : 'dark';
   localStorage.setItem('kr6_theme', next);
   document.documentElement.setAttribute('data-theme', next);
-  const icon = document.getElementById('theme-icon');
-  if (icon) {
-    icon.style.animation = 'spinOnce 300ms var(--ease) both';
-    icon.textContent = next === 'dark' ? 'light_mode' : 'dark_mode';
-    setTimeout(() => icon.style.animation = '', 320);
-  }
+  alert('Theme changed to: ' + next);
 }
 
-// ── SOCIAL PROOF ANIMATION ──
-function animateSocialProof() {
-  const el = document.getElementById('sp-count');
-  if (el) animateCount(el, 450);
-}
-
-// ── STATS WITH RUNTIME SAFEGUARDS ──
 function updateLandingStats() {
-  const listingsArray = (window.DB && Array.isArray(window.DB.listings)) ? window.DB.listings : [];
-  const agentsArray = (window.DB && Array.isArray(window.DB.agents)) ? window.DB.agents : [];
-
-  const total    = listingsArray.filter(l => l && l.status !== 'rejected').length;
-  const verified = listingsArray.filter(l => l && l.status === 'verified').length;
-  const agents   = agentsArray.filter(a => a && a.status === 'approved').length;
-  
-  const lt = document.getElementById('lp-total');    if (lt) animateCount(lt, total);
-  const lv = document.getElementById('lp-verified'); if (lv) animateCount(lv, verified);
-  const la = document.getElementById('lp-agents');   if (la) animateCount(la, agents);
+  const listingsArray = (window.DB && window.DB.listings) ? window.DB.listings : [];
+  const agentsArray = (window.DB && window.DB.agents) ? window.DB.agents : [];
+  console.log('Stats execution validated.', listingsArray.length, agentsArray.length);
 }
 
-function renderFeatured() {
-  const listingsArray = (window.DB && Array.isArray(window.DB.listings)) ? window.DB.listings : [];
-  const vl = listingsArray.find(l => l && l.status === 'verified' && l.photos && l.photos.length);
-  const wrap = document.getElementById('feat-wrap');
-  const card = document.getElementById('feat-card');
-  if (!vl || !wrap || !card) return;
-  wrap.style.display = 'block';
-  card.innerHTML = `
-    <div class="feat-inner">
-      <div class="feat-thumb">
-        <img src="${vl.photos[0]}" alt="${vl.title}">
-      </div>
-      <div class="feat-info">
-        <div>
-          <span class="feat-area">${vl.area}</span>
-          <span class="feat-v"><span class="material-symbols-rounded ms" style="font-size:.7rem;">verified</span> Verified</span>
-        </div>
-        <div class="feat-title">${vl.title}</div>
-        <div class="feat-price">N${window.fmtN(vl.price)} / year</div>
-      </div>
-    </div>`;
-}
-
-// ── ROLE CLICK MECHANICS ──
 function handleRoleClick(role, event) {
-  const card = event?.currentTarget;
-  if (card) {
-    const ripple = document.createElement('span');
-    const rect   = card.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    ripple.style.cssText = `position:absolute;border-radius:50%;background:rgba(255,255,255,.14);width:200px;height:200px;margin-left:-100px;margin-top:-100px;left:${x}px;top:${y}px;animation:ripple 500ms ease-out both;pointer-events:none;`;
-    card.style.position = 'relative';
-    card.style.overflow = 'hidden';
-    card.appendChild(ripple);
-    setTimeout(() => ripple.remove(), 520);
-  }
-
-  pendingRole = role;
-
-  if (role === 'guest') {
-    setTimeout(() => window.seekerGuest(), 120);
-    return;
-  }
-
-  if (!termsAccepted && role === 'seeker') {
-    setTimeout(() => openTerms(), 120);
-  } else {
-    setTimeout(() => proceedToRole(role), 120);
-  }
-}
-
-function openTerms() {
-  document.getElementById('terms-overlay').classList.add('open');
-}
-function closeTerms() {
-  document.getElementById('terms-overlay').classList.remove('open');
-  pendingRole = null;
-}
-function acceptTermsAndProceed() {
-  termsAccepted = true;
-  localStorage.setItem('kr6_terms_accepted', 'true');
-  document.getElementById('terms-overlay').classList.remove('open');
-  proceedToRole(pendingRole);
-}
-
-function proceedToRole(role) {
+  alert('Click event caught successfully for role: ' + role);
   if (role === 'seeker') { window.goPage('seeker.html'); }
   if (role === 'agent')  { window.goPage('auth-agent.html'); }
-  if (role === 'admin')  { window.goPage('auth-admin.html'); }
-}
-
-// ── SATISFACTION FLOW ──
-function openSatisfaction() {
-  document.getElementById('sat-overlay').classList.add('open');
-}
-function rateStar(n) {
-  satRating = n;
-  document.querySelectorAll('.sat-star').forEach((s, i) => {
-    s.classList.toggle('active', i < n);
-    if (i < n) { s.style.animation = `bounceIn 200ms var(--spring) ${i*50}ms both`; }
-  });
-}
-function submitSatisfaction() {
-  if (!satRating) { alert('Please give a rating'); return; }
-  const comment = document.getElementById('sat-comment')?.value.trim();
-  const reviews = JSON.parse(localStorage.getItem('kr6_reviews') || '[]');
-  reviews.push({ rating: satRating, comment, at: Date.now() });
-  localStorage.setItem('kr6_reviews', JSON.stringify(reviews));
-  document.getElementById('sat-overlay').classList.remove('open');
-
-  const msg = encodeURIComponent(
-    `KeffiRooms Satisfaction Report\n\nRating: ${'★'.repeat(satRating)}\nComment: ${comment || 'No comment'}\nTime: ${window.nowStr()}\n\n[Coordination fee can now be collected]`
-  );
-  setTimeout(() => window.open(`https://wa.me/${window.ADMIN_WA}?text=${msg}`, '_blank'), 1000);
-}
-
-// ── ANIMATE COUNT ──
-function animateCount(el, target) {
-  let current = 0;
-  const step = Math.max(1, Math.floor(target / 25));
-  const interval = setInterval(() => {
-    current = Math.min(current + step, target);
-    el.textContent = current + (target > 50 ? '+' : '');
-    if (current >= target) clearInterval(interval);
-  }, 40);
 }
 </script>
 </body>
