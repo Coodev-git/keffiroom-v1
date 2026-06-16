@@ -25,6 +25,18 @@
   --sh:0 4px 24px rgba(13,31,28,.1);--sh-lg:0 12px 48px rgba(13,31,28,.14);
 }
 
+/* RESPONSIVE DESKTOP CONSTRAINT WRAPPERS */
+.sl-top, 
+.sl-cards, 
+.sl-footer,
+.scroll-content-wrap {
+  width: 100%;
+  max-width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
 /* SOCIAL PROOF ROW */
 .social-proof {
   display:flex;align-items:center;gap:0;margin-bottom:6px;
@@ -250,63 +262,64 @@
   </div>
 </div>
 
-<!-- SCROLLABLE INFO (below fold, reached by scrolling) -->
+<!-- SCROLLABLE INFO -->
 <div style="background:var(--bg);">
-
-  <!-- SOCIAL PROOF -->
-  <div style="padding:36px 20px 0;max-width:420px;margin:0 auto;">
-    <div class="social-proof">
-      <div class="sp-avatars">
-        <div class="sp-av">AY</div>
-        <div class="sp-av" style="background:linear-gradient(135deg,#C9863A,#A06828);">IB</div>
-        <div class="sp-av" style="background:linear-gradient(135deg,#7C3AED,#5B21B6);">CH</div>
-        <div class="sp-av" style="background:linear-gradient(135deg,#10B981,#0F766E);">MU</div>
-        <div class="sp-av" style="background:linear-gradient(135deg,#EF4444,#B91C1C);">FA</div>
+  <div class="scroll-content-wrap">
+    <!-- SOCIAL PROOF -->
+    <div style="padding:36px 20px 0;">
+      <div class="social-proof">
+        <div class="sp-avatars">
+          <div class="sp-av">AY</div>
+          <div class="sp-av" style="background:linear-gradient(135deg,#C9863A,#A06828);">IB</div>
+          <div class="sp-av" style="background:linear-gradient(135deg,#7C3AED,#5B21B6);">CH</div>
+          <div class="sp-av" style="background:linear-gradient(135deg,#10B981,#0F766E);">MU</div>
+          <div class="sp-av" style="background:linear-gradient(135deg,#EF4444,#B91C1C);">FA</div>
+        </div>
+        <div>
+          <div class="sp-text"><strong id="sp-count">0</strong> students housed this semester</div>
+          <div class="sp-stars">★★★★★</div>
+        </div>
       </div>
-      <div>
-        <div class="sp-text"><strong id="sp-count">0</strong> students housed this semester</div>
-        <div class="sp-stars">★★★★★</div>
+      <div class="trust-badges">
+        <div class="trust-badge"><span class="material-symbols-rounded ms">verified_user</span> GPS Verified</div>
+        <div class="trust-badge"><span class="material-symbols-rounded ms">lock</span> Escrow Protected</div>
+        <div class="trust-badge"><span class="material-symbols-rounded ms">support_agent</span> Admin Verified</div>
       </div>
     </div>
-    <div class="trust-badges">
-      <div class="trust-badge"><span class="material-symbols-rounded ms">verified_user</span> GPS Verified</div>
-      <div class="trust-badge"><span class="material-symbols-rounded ms">lock</span> Escrow Protected</div>
-      <div class="trust-badge"><span class="material-symbols-rounded ms">support_agent</span> Admin Verified</div>
-    </div>
-  </div>
 
-  <!-- STATS -->
-  <div style="padding:0 20px;max-width:420px;margin:0 auto;">
-    <div class="stats-strip">
-      <div class="stat-item"><div class="stat-n t" id="lp-total">0</div><div class="stat-l">Listings</div></div>
-      <div class="stat-item"><div class="stat-n g" id="lp-verified">0</div><div class="stat-l">Verified</div></div>
-      <div class="stat-item"><div class="stat-n gld" id="lp-agents">0</div><div class="stat-l">Agents</div></div>
+    <!-- STATS -->
+    <div style="padding:0 20px;">
+      <div class="stats-strip">
+        <div class="stat-item"><div class="stat-n t" id="lp-total">0</div><div class="stat-l">Listings</div></div>
+        <div class="stat-item"><div class="stat-n g" id="lp-verified">0</div><div class="stat-l">Verified</div></div>
+        <div class="stat-item"><div class="stat-n gld" id="lp-agents">0</div><div class="stat-l">Agents</div></div>
+      </div>
     </div>
-  </div>
 
-  <!-- FEATURED -->
-  <div class="feat-wrap" id="feat-wrap" style="display:none;padding:0 20px;">
-    <div class="feat-card" id="feat-card"></div>
-  </div>
+    <!-- FEATURED -->
+    <div class="feat-wrap" id="feat-wrap" style="display:none;padding:0 20px;">
+      <div class="feat-card" id="feat-card"></div>
+    </div>
 
-  <!-- HOW IT WORKS -->
-  <div class="hiw">
-    <div class="hiw-title">How KeffiRooms Works:</div>
-    <div class="hiw-step">
-      <div class="step-num t">1</div>
-      <div><div class="step-t">Pick Your Preferred Zone</div><div class="step-s">Filter by popular NSUK student locations: High Court Road, Angwan Lambu, Kelv, Pyanku.</div></div>
-    </div>
-    <div class="hiw-step">
-      <div class="step-num g">2</div>
-      <div><div class="step-t">Verify Trust Badge</div><div class="step-s">Every verified listing has been physically inspected by our Admin team so you don't lose money to scammers.</div></div>
-    </div>
-    <div class="hiw-step">
-      <div class="step-num t">3</div>
-      <div><div class="step-t">Connect &amp; Secure Lodge</div><div class="step-s">KeffiRooms connects you with verified agents through our protected WhatsApp escrow coordination.</div></div>
-    </div>
-    <div class="hiw-step">
-      <div class="step-num g">4</div>
-      <div><div class="step-t">Confirm &amp; Complete</div><div class="step-s">After visiting the property, both parties confirm satisfaction. Payment is released only when both sides agree.</div></div>
+    <!-- HOW IT WORKS -->
+    <div class="hiw">
+      <div class="hiw-title">How KeffiRooms Works:</div>
+      <div class="hiw-step">
+        <div class="step-num t">1</div>
+        <div><div class="step-t">Pick Your Preferred Zone</div><div class="step-s">Filter by popular NSUK student locations: High Court Road, Angwan Lambu, Kelv, Pyanku.</div></div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num g">2</div>
+        <div><div class="step-t">Verify Trust Badge</div><div class="step-s">Every verified listing has been physically inspected by our Admin team so you don't lose money to scammers.</div></div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num t">3</div>
+        <div><div class="step-t">Connect &amp; Secure Lodge</div><div class="step-s">KeffiRooms connects you with verified agents through our protected WhatsApp escrow coordination.</div></div>
+      </div>
+      <div class="hiw-step">
+        <div class="step-num g">4</div>
+        <div><div class="step-t">Confirm &amp; Complete</div><div class="step-s">After visiting the property, both parties confirm satisfaction. Payment is released only when both sides agree.</div></div>
+      </div>
     </div>
   </div>
 
@@ -402,6 +415,15 @@
 <script src="js/db.js"></script>
 <script src="js/auth.js"></script>
 <script>
+// ── ARCHITECTURAL EXECUTION SAFEGUARDS ──
+// Prevents complete application freezing if external dependencies/files fail to load
+window.goPage = window.goPage || function(url) { window.location.href = url; };
+window.fmtN = window.fmtN || function(num) { return Number(num).toLocaleString(); };
+window.nowStr = window.nowStr || function() { return new Date().toLocaleString(); };
+window.ADMIN_WA = window.ADMIN_WA || "2340000000000"; 
+window.seekerGuest = window.seekerGuest || function() { window.location.href = 'seeker.html?guest=true'; };
+window.DB = window.DB || { listings: [], agents: [] };
+
 // ── PENDING ROLE ──
 let pendingRole = null;
 let termsAccepted = localStorage.getItem('kr6_terms_accepted') === 'true';
@@ -413,7 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateLandingStats();
   renderFeatured();
   animateSocialProof();
-  // check if coming back after satisfaction confirmation
+  
   const pendingSat = sessionStorage.getItem('kr6_pending_satisfaction');
   if (pendingSat) {
     sessionStorage.removeItem('kr6_pending_satisfaction');
@@ -447,18 +469,23 @@ function animateSocialProof() {
   if (el) animateCount(el, 450);
 }
 
-// ── STATS ──
+// ── STATS WITH RUNTIME SAFEGUARDS ──
 function updateLandingStats() {
-  const total    = DB.listings.filter(l => l.status !== 'rejected').length;
-  const verified = DB.listings.filter(l => l.status === 'verified').length;
-  const agents   = DB.agents.filter(a => a.status === 'approved').length;
+  const listingsArray = (window.DB && Array.isArray(window.DB.listings)) ? window.DB.listings : [];
+  const agentsArray = (window.DB && Array.isArray(window.DB.agents)) ? window.DB.agents : [];
+
+  const total    = listingsArray.filter(l => l && l.status !== 'rejected').length;
+  const verified = listingsArray.filter(l => l && l.status === 'verified').length;
+  const agents   = agentsArray.filter(a => a && a.status === 'approved').length;
+  
   const lt = document.getElementById('lp-total');    if (lt) animateCount(lt, total);
   const lv = document.getElementById('lp-verified'); if (lv) animateCount(lv, verified);
   const la = document.getElementById('lp-agents');   if (la) animateCount(la, agents);
 }
 
 function renderFeatured() {
-  const vl = DB.listings.find(l => l.status === 'verified' && l.photos && l.photos.length);
+  const listingsArray = (window.DB && Array.isArray(window.DB.listings)) ? window.DB.listings : [];
+  const vl = listingsArray.find(l => l && l.status === 'verified' && l.photos && l.photos.length);
   const wrap = document.getElementById('feat-wrap');
   const card = document.getElementById('feat-card');
   if (!vl || !wrap || !card) return;
@@ -474,14 +501,13 @@ function renderFeatured() {
           <span class="feat-v"><span class="material-symbols-rounded ms" style="font-size:.7rem;">verified</span> Verified</span>
         </div>
         <div class="feat-title">${vl.title}</div>
-        <div class="feat-price">N${fmtN(vl.price)} / year</div>
+        <div class="feat-price">N${window.fmtN(vl.price)} / year</div>
       </div>
     </div>`;
 }
 
-// ── ROLE CLICK WITH TERMS ──
+// ── ROLE CLICK MECHANICS ──
 function handleRoleClick(role, event) {
-  // Ripple effect
   const card = event?.currentTarget;
   if (card) {
     const ripple = document.createElement('span');
@@ -498,11 +524,10 @@ function handleRoleClick(role, event) {
   pendingRole = role;
 
   if (role === 'guest') {
-    setTimeout(() => seekerGuest(), 120);
+    setTimeout(() => window.seekerGuest(), 120);
     return;
   }
 
-  // Show terms if not yet accepted
   if (!termsAccepted && role === 'seeker') {
     setTimeout(() => openTerms(), 120);
   } else {
@@ -525,9 +550,9 @@ function acceptTermsAndProceed() {
 }
 
 function proceedToRole(role) {
-  if (role === 'seeker') { goPage('seeker.html'); }
-  if (role === 'agent')  { goPage('auth-agent.html'); }
-  if (role === 'admin')  { goPage('auth-admin.html'); }
+  if (role === 'seeker') { window.goPage('seeker.html'); }
+  if (role === 'agent')  { window.goPage('auth-agent.html'); }
+  if (role === 'admin')  { window.goPage('auth-admin.html'); }
 }
 
 // ── SATISFACTION FLOW ──
@@ -542,20 +567,17 @@ function rateStar(n) {
   });
 }
 function submitSatisfaction() {
-  if (!satRating) { showToast('Please give a rating'); return; }
+  if (!satRating) { alert('Please give a rating'); return; }
   const comment = document.getElementById('sat-comment')?.value.trim();
-  // Save review
   const reviews = JSON.parse(localStorage.getItem('kr6_reviews') || '[]');
   reviews.push({ rating: satRating, comment, at: Date.now() });
   localStorage.setItem('kr6_reviews', JSON.stringify(reviews));
   document.getElementById('sat-overlay').classList.remove('open');
-  showToast('Thank you! Your feedback protects other students.');
 
-  // Send satisfaction notification to admin WhatsApp
   const msg = encodeURIComponent(
-    `KeffiRooms Satisfaction Report\n\nRating: ${'★'.repeat(satRating)}\nComment: ${comment || 'No comment'}\nTime: ${nowStr()}\n\n[Coordination fee can now be collected]`
+    `KeffiRooms Satisfaction Report\n\nRating: ${'★'.repeat(satRating)}\nComment: ${comment || 'No comment'}\nTime: ${window.nowStr()}\n\n[Coordination fee can now be collected]`
   );
-  setTimeout(() => window.open(`https://wa.me/${ADMIN_WA}?text=${msg}`, '_blank'), 1000);
+  setTimeout(() => window.open(`https://wa.me/${window.ADMIN_WA}?text=${msg}`, '_blank'), 1000);
 }
 
 // ── ANIMATE COUNT ──
